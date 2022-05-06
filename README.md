@@ -23,6 +23,7 @@ During your interview you will need to answer questions about how you found the 
 
 #### Note
 - Don't waste time cleaning the code, thats not the issue.
+- The app was built and tested on Node version v16.14.2, adviced to use the same node version.
 
 #### PS
 - Please do not use JS inbuilt functions like, filter, map, reduce, include, etc to fix. 
