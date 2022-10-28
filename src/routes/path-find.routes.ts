@@ -92,7 +92,7 @@ const findShortestPath = (
   let parent = parents[endNode];
   console.log("parent and", parents, parent)
   while (parent) {
-    shortestPath.push(parent);
+    shortestPath.unshift(parent);
     if (parent === startNode) {
       parent = null;
     } else {
@@ -100,7 +100,7 @@ const findShortestPath = (
     }
     console.log("parent and", parents, parent)
   }
-  shortestPath.reverse();
+  // shortestPath.reverse();
   console.log("shortest path", 'eror', shortestPath)
   // //this is the shortest path
   const results = {
