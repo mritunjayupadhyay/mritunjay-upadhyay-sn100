@@ -44,24 +44,25 @@ const findShortestPath = (
   let distances: Record<string, number> = {};
   distances[endNode] = Infinity;
   distances = Object.assign(distances, paths[startNode]);
-
+  console.log("get distances", distances);
+  // return distances;
   // track paths using a hash object
   const parents: Record<string, string | null> = { [endNode]: null };
   for (const child in paths[startNode]) {
     parents[child] = startNode;
   }
-
-  // collect visited nodes
+  console.log("the parents", parents);
+  // // collect visited nodes
   const visited: string[] = [];
-  // find the nearest node
+  // // find the nearest node
   let node = shortestDistanceNode(distances, visited);
-
+  console.log("the shortest node at first", node);
   // for that node:
+  let increment = 0;
   while (node) {
     // find its distance from the start node & its child nodes
     const distance = distances[node];
     const children = paths[node];
-
     // for each of those child nodes:
     for (const child in children) {
       // save the distance from the start node to the child node
@@ -79,25 +80,38 @@ const findShortestPath = (
     visited.push(node);
     // move to the nearest neighbor node
     node = shortestDistanceNode(distances, visited);
+    console.log(increment, "the shortest distance", parents, distances);
+    increment++;
   }
-
+  //  return distances;
   // using the stored paths from start node to end node
   // record the shortest path
+
+  console.log("-------------");
   const shortestPath = [endNode];
   let parent = parents[endNode];
+  console.log("parent and", parents, parent)
   while (parent) {
     shortestPath.push(parent);
-    parent = parents[parent];
+    if (parent === startNode) {
+      parent = null;
+    } else {
+      parent = parents[parent];
+    }
+    console.log("parent and", parents, parent)
   }
   shortestPath.reverse();
-
-  //this is the shortest path
+  console.log("shortest path", 'eror', shortestPath)
+  // //this is the shortest path
   const results = {
     distance: distances[endNode],
     path: shortestPath,
   };
-  // return the shortest path & the end node's distance from the start node
+  console.log(results);
+  // // return the shortest path & the end node's distance from the start node
   return results;
+
+  // return distances;
 };
 
 const shortestDistanceNode = (
