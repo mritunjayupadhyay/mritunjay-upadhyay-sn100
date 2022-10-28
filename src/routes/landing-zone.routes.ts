@@ -46,7 +46,7 @@ router.get(
 export const isValidLandingZone = ({ R1: arr1, R2: arr2 }: ICoordinates) => {
   // const valid: boolean[] = [];
   const dataSetOfR1 = {};
-  for (let i = 0; i < arr2.length; i++) {
+  for (let i = 0; i < arr1.length; i++) {
     if (!dataSetOfR1[arr1[i]]) {
       dataSetOfR1[arr1[i]] = arr1[i];
     }
